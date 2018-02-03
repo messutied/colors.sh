@@ -1,0 +1,27 @@
+.output {
+  margin: 0 auto;
+  text-align: left;
+  width: 640px;
+  background-color: #1b346f;
+  color: white;
+  padding: 30px;
+  font-weight: 300;
+  font-family: monospace;
+  line-height: 1.6em;
+  font-size: 14px;
+  counter-reset: line;
+  display: flex;
+  box-shadow: #b7b7b7 0 0 60px;
+  border-radius: 5px;
+
+  .line-comment {
+    color: #798bb5;
+  }
+
+  .line::before {
+    counter-increment: line;
+    content: counter(line);
+    margin-right: 10px;
+    color: grey;
+  }
+}

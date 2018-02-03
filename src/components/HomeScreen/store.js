@@ -4,7 +4,7 @@ import formats from './formats';
 
 export default class Store {
   @observable selectedColor = {};
-  @observable text = 'Color me surprised ;)';
+  @observable text = 'Color me, surprised';
   @observable formats = [];
 
   @action setColor(id) {
@@ -13,8 +13,6 @@ export default class Store {
   }
 
   @action setformat(name, enabled) {
-    console.log(enabled);
-    console.log(formats.find(f => f.name === name));
     if (enabled) this.formats = [...this.formats, formats.find(f => f.name === name)];
     else this.formats = this.formats.filter(f => f.name !== name);
   }

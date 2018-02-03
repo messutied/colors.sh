@@ -1,0 +1,61 @@
+.output {
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin: 50px auto;
+  border-radius: 5px 5px 0 0;
+  box-shadow: #b7b7b7 0 0 60px;
+
+  .terminal-header {
+    background: #DBD9DB;
+    background: linear-gradient(to bottom, #E7E5E7, #D2D0D2);
+    text-align: center;
+    position: relative;
+    color: #373537;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #d2d2d2;
+
+    .btns {
+      position: absolute;
+      top: 5px;
+      display: flex;
+
+      & > div {
+        width: 15px;
+        height: 15px;
+        background: red;
+        border-radius: 50%;
+        margin-left: 8px;
+
+        &:nth-child(1) { background: #FC625D; }
+        &:nth-child(2) { background: #FDBC40; }
+        &:nth-child(3) { background: #35CA4A; }
+      }
+    }
+  }
+
+  .terminal-body {
+    display: flex;
+    height: 230px;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-family: monospace;
+
+    .text {
+      transition: color .3s;
+    }
+    .text::before {
+      content: ">";
+      color: #b7b7b7;
+      margin-right: 10px;
+    }
+  }
+}
