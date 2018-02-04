@@ -42,7 +42,7 @@ const HomeScreen = () => {
         bgColor={selectedBgColor.hex}
         formats={store.formats.map(f => f.name)}
       />
-      <Output {...store} />
+      <Output lines={store.outputLines} />
     </div>
   );
 };
