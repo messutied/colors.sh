@@ -10,10 +10,12 @@
   line-height: 1.6em;
   font-size: 14px;
   counter-reset: line;
-  display: flex;
   box-shadow: #b7b7b7 0 0 60px;
   border-radius: 5px;
 
+  .line {
+    display: flex;
+  }
   .line-comment {
     color: #798bb5;
   }

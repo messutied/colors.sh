@@ -43,19 +43,23 @@
 
   .terminal-body {
     display: flex;
-    height: 230px;
+    height: 200px;
     justify-content: center;
     align-items: center;
     font-size: 35px;
     font-family: monospace;
 
     .text {
-      transition: color .3s;
+      transition: all .15s ease-in;
+      padding: 0 10px;
+
+      &.format-bold { font-weight: bold; }
+      &.format-dim { opacity: .5; }
+      &.format-underlined { text-decoration: underline; }
+      &.format-hidden { visibility: hidden; }
     }
-    .text::before {
-      content: ">";
+    .arrow {
       color: #b7b7b7;
-      margin-right: 10px;
     }
   }
 }

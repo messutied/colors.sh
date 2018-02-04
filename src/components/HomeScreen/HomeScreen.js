@@ -23,15 +23,25 @@ const FormatField = ({ format }) => (
 );
 
 const HomeScreen = () => {
-  const { selectedColor, text } = store;
+  const { selectedColor, selectedBgColor, text } = store;
 
   return (
     <div className="home-screen">
       <select value={selectedColor.id} onChange={evt => store.setColor(evt.target.value)}>
+        <option value="">Foreground</option>
+        {colors.map(([name, id]) => <option key={id} value={id}>{name}</option>)}
+      </select>
+      <select value={selectedBgColor.id} onChange={evt => store.setBgColor(evt.target.value)}>
+        <option value="">Background</option>
         {colors.map(([name, id]) => <option key={id} value={id}>{name}</option>)}
       </select>
       {formats.map(format => <FormatField key={format.name} format={format} />)}
-      <Terminal text={text} color={selectedColor.hex} />
+      <Terminal
+        text={text}
+        color={selectedColor.hex}
+        bgColor={selectedBgColor.hex}
+        formats={store.formats.map(f => f.name)}
+      />
       <Output {...store} />
     </div>
   );
