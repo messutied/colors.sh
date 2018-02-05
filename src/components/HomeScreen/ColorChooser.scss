@@ -1,0 +1,26 @@
+$cell-size: 15px;
+$n-cell-cols: 29;
+$width: ($cell-size) * $n-cell-cols;
+
+.color-chooser {
+  display: inline-block;
+  position: relative;
+
+  .colors {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    width: $width;
+    margin-top: 5px;
+    background: white;
+    border: 1px solid grey;
+
+    button.color {
+      height: $cell-size;
+      width: $cell-size;
+      border: 1px solid white;
+      padding: 0;
+    }
+  }
+}

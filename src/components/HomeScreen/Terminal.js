@@ -2,8 +2,12 @@ import React from 'react';
 import './Terminal.scss';
 
 export default ({ text, color, bgColor, formats }) => {
-  const invertedStyle = formats.includes('Invert') ?
-    { color: bgColor, background: color } : null;
+  const inverted = formats.includes('Invert');
+  const dimmed = formats.includes('Dim');
+  const finalFgColor = inverted ? bgColor : color;
+  const finalBgColor = inverted ? color : bgColor;
+  const style = { color: dimmed ? `${finalFgColor}7f` : finalFgColor, background: finalBgColor };
+  const className = `text ${formats.map(f => `format-${f.toLowerCase()}`).join(' ')}`;
 
   return (
     <div className="terminal">
@@ -17,12 +21,7 @@ export default ({ text, color, bgColor, formats }) => {
       </div>
       <div className="terminal-body">
         <span className="arrow">></span>
-        <span
-          className={`text ${formats.map(f => `format-${f.toLowerCase()}`).join(' ')}`}
-          style={{ color, background: bgColor, ...invertedStyle }}
-        >
-          {text}
-        </span>
+        <span className={className} style={style}>{text}</span>
       </div>
     </div>
   );

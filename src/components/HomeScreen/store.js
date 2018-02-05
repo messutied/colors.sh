@@ -2,11 +2,25 @@ import { observable, action, computed } from 'mobx';
 import colors from './colors-256';
 import formats from './formats';
 
+class Color {
+  constructor([name, id, hex]) {
+    this.name = name;
+    this.id = id;
+    this.hex = hex;
+  }
+}
+
 export default class Store {
-  @observable selectedColor = {};
+  @observable selectedColor = new Color(colors.find(c => c[0] === 'Black'));
   @observable selectedBgColor = {};
   @observable text = 'Color me, surprised';
   @observable formats = [];
+
+  constructor() {
+    this.setColor = this.setColor.bind(this);
+    this.setBgColor = this.setBgColor.bind(this);
+    this.setFormat = this.setFormat.bind(this);
+  }
 
   @action setColor(id) {
     this.setAColor('selectedColor', id);
@@ -16,15 +30,15 @@ export default class Store {
     this.setAColor('selectedBgColor', id);
   }
 
-  @action setformat(name, enabled) {
+  @action setFormat(name, enabled) {
     if (enabled) this.formats = [...this.formats, formats.find(f => f.name === name)];
     else this.formats = this.formats.filter(f => f.name !== name);
   }
 
   @action setAColor(field, id) {
     if (id) {
-      const [name,, hex] = colors.find(c => c[1] === Number(id));
-      this[field] = { id, hex, name };
+      const color = colors.find(c => c[1] === Number(id));
+      this[field] = new Color(color);
     } else this[field] = {};
   }
 
@@ -40,7 +54,7 @@ export default class Store {
     if (fgColor) lines.push(fgColor);
     if (bgColor) lines.push(bgColor);
 
-    const formatsStr = formats.map(f => `\${F_${f.name.toUpperCase()}}`).join('');
+    const formatsStr = this.formats.map(f => `\${F_${f.name.toUpperCase()}}`).join('');
     const colorStr = selectedColor.id ? `\${C_${selectedColor.name.toUpperCase()}}` : '';
     const bgColorStr = selectedBgColor.id ? `\${C_${selectedBgColor.name.toUpperCase()}}` : '';
     lines.push(`echo -e "${formatsStr}${colorStr}${bgColorStr}${text}\${NO_FORMAT}"`);

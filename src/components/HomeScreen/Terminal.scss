@@ -6,8 +6,7 @@
 .terminal {
   display: flex;
   flex-direction: column;
-  width: 700px;
-  margin: 50px auto;
+  margin: 50px auto 50px auto;
   border-radius: 5px 5px 0 0;
   box-shadow: #b7b7b7 0 0 60px;
 
@@ -54,7 +53,6 @@
       padding: 0 10px;
 
       &.format-bold { font-weight: bold; }
-      &.format-dim { opacity: .5; }
       &.format-underlined { text-decoration: underline; }
       &.format-hidden { visibility: hidden; }
     }
