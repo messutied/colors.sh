@@ -1,7 +1,7 @@
 import React from 'react';
-import colors from './colors-256';
 import allFormats from './formats';
 import ColorChooser from './ColorChooser';
+import './Controls.scss';
 
 const FormatField = ({ formats, setFormat, format }) => (
   <label>
@@ -16,8 +16,8 @@ const FormatField = ({ formats, setFormat, format }) => (
 
 export default ({ selectedColor, selectedBgColor, setColor, setBgColor, formats, setFormat }) => (
   <div className="controls">
-    <ColorChooser label="Foreground" callback={setColor} />
-    <ColorChooser label="Background" callback={setBgColor} />
+    <ColorChooser label="Foreground" callback={setColor} color={selectedColor} />
+    <ColorChooser label="Background" callback={setBgColor} color={selectedBgColor} />
     {allFormats.map(format =>
       <FormatField key={format.name} {...{ formats, setFormat, format }} />)}
   </div>

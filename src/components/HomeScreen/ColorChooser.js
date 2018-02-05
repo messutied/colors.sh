@@ -2,7 +2,7 @@ import React from 'react';
 import colors from './colors-256';
 import './ColorChooser.scss';
 
-const Color = ({ color: [name, id, hex], callback }) => (
+const ColorBtn = ({ color: [name, id, hex], callback }) => (
   <button
     className="color"
     onClick={() => callback(id)}
@@ -12,21 +12,42 @@ const Color = ({ color: [name, id, hex], callback }) => (
 );
 
 export default class ColorChooser extends React.Component {
+  constructor() {
+    super();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
   state = { isActive: false };
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  handleClickOutside(event) {
+    if (this.state.isActive && this.ref && !this.ref.contains(event.target)) {
+      this.setState({ isActive: false });
+    }
+  }
 
   render() {
     const { label, callback } = this.props;
     const { isActive } = this.state;
+    const className = `color-chooser ${isActive ? 'active' : ''}`;
     return (
-      <div className="color-chooser">
+      <div className={className} ref={(el) => { this.ref = el; }}>
         <button onClick={() => this.setState({ isActive: !isActive })}>
-          {label}
+          <span className="content">{label}</span>
+          <span className="arrow">⌄</span>
         </button>
         {
           isActive &&
           <div className="colors">
             {colors.map(color =>
-              <Color key={color[1]} color={color} callback={callback} />)}
+              <ColorBtn key={color[1]} color={color} callback={callback} />)}
           </div>
         }
       </div>

@@ -1,0 +1,11 @@
+.controls {
+  .color-chooser > button, label {
+    font-size: 15px;
+  }
+  label input {
+    margin-right: 5px;
+  }
+  > * {
+    margin: 0 5px;
+  }
+}

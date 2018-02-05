@@ -6,6 +6,22 @@ $width: ($cell-size) * $n-cell-cols;
   display: inline-block;
   position: relative;
 
+  & > button {
+    border: none;
+    background: none;
+
+    .arrow {
+      font-size: 2em;
+      line-height: 0;
+      top: 2px;
+      position: relative;
+    }
+  }
+
+  &.active > button .content {
+    text-decoration: underline;
+  }
+
   .colors {
     position: absolute;
     z-index: 10;
