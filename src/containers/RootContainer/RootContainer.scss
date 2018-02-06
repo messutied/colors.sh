@@ -11,9 +11,26 @@ button {
   outline: none;
 }
 
+a, a:visited, a:active {
+  color: #1976D2;
+  text-decoration: none;
+}
+
 .logo {
   position: absolute;
   top: 5px;
   left: 8px;
   font-weight: bold;
+}
+
+footer {
+  padding: 0 10px;
+  max-width: 700px;
+  margin: 50px auto 0 auto;
+  display: flex;
+
+  .author {
+    flex: 1;
+    text-align: right;
+  }
 }
