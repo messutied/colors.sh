@@ -27,4 +27,4 @@ export default ({ text, color, bgColor, formats }) => {
       </div>
     </div>
   );
-}
+};

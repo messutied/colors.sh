@@ -1,6 +1,10 @@
 $cell-size: 15px;
 $n-cell-cols: 29;
-$width: ($cell-size) * $n-cell-cols;
+$width: $cell-size * $n-cell-cols;
+
+$xs-cell-size: 30px;
+$xs-n-cell-cols: 10;
+$xs-width: $xs-cell-size * $xs-n-cell-cols;
 
 .color-chooser {
   display: inline-block;
@@ -42,6 +46,17 @@ $width: ($cell-size) * $n-cell-cols;
 
       &.selected {
         border: 2px solid black;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .colors {
+      width: $xs-width;
+
+      button.color {
+        height: $xs-cell-size;
+        width: $xs-cell-size;
       }
     }
   }
