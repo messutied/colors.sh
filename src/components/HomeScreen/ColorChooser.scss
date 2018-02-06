@@ -9,6 +9,7 @@ $width: ($cell-size) * $n-cell-cols;
   & > button {
     border: none;
     background: none;
+    cursor: pointer;
 
     .arrow {
       font-size: 2em;
@@ -33,10 +34,15 @@ $width: ($cell-size) * $n-cell-cols;
     border: 1px solid grey;
 
     button.color {
+      cursor: pointer;
       height: $cell-size;
       width: $cell-size;
       border: 1px solid white;
       padding: 0;
+
+      &.selected {
+        border: 2px solid black;
+      }
     }
   }
 }

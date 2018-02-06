@@ -5,7 +5,10 @@ import './RootContainer.scss';
 export default class RootContainer extends React.Component {
   render() {
     return (
-      <HomeScreen />
+      <div>
+        <span className="logo">🌈💻 Colors.sh</span>
+        <HomeScreen />
+      </div>
     );
   }
 }

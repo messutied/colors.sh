@@ -2,6 +2,15 @@ import { observable, action, computed } from 'mobx';
 import colors from './colors-256';
 import formats from './formats';
 
+const TEXTS = [
+  'Color me, surprised',
+  'Put some color on me',
+  'Roses are red',
+  'Violets are blue',
+  'Lorem ipsum dolor sit amet',
+];
+const TEXT = TEXTS[Math.floor(Math.random() * TEXTS.length)];
+
 class Color {
   constructor([name, id, hex]) {
     this.name = name;
@@ -13,7 +22,7 @@ class Color {
 export default class Store {
   @observable selectedColor = new Color(colors.find(c => c[0] === 'Black'));
   @observable selectedBgColor = {};
-  @observable text = 'Color me, surprised';
+  @observable text = TEXT;
   @observable formats = [];
 
   constructor() {

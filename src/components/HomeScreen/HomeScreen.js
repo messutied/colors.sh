@@ -15,6 +15,10 @@ const HomeScreen = () => {
 
   return (
     <div className="home-screen">
+      <div className="help">
+        Colors.sh helps you put colors and format to your bash scripts. <br/>
+        Pick some options to format the terminal's preview 👇
+      </div>
       <Controls {...store} />
       <Terminal
         text={text}

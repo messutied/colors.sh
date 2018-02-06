@@ -7,8 +7,9 @@
   display: flex;
   flex-direction: column;
   margin: 50px auto 50px auto;
-  border-radius: 5px 5px 0 0;
+  border-radius: 6px;
   box-shadow: #b7b7b7 0 0 60px;
+  border: 1px solid #cccccc;
 
   .terminal-header {
     background: #DBD9DB;
@@ -19,16 +20,15 @@
     font-size: 14px;
     padding: 5px;
     border-radius: 5px 5px 0 0;
-    border: 1px solid #d2d2d2;
 
     .btns {
       position: absolute;
-      top: 5px;
+      top: 7px;
       display: flex;
 
       & > div {
-        width: 15px;
-        height: 15px;
+        width: 14px;
+        height: 14px;
         background: red;
         border-radius: 50%;
         margin-left: 8px;
@@ -42,15 +42,17 @@
 
   .terminal-body {
     display: flex;
-    height: 200px;
+    height: 180px;
     justify-content: center;
     align-items: center;
     font-size: 35px;
     font-family: monospace;
+    padding: 10px;
 
     .text {
       transition: all .15s ease-in;
       padding: 0 10px;
+      outline: none;
 
       &.format-bold { font-weight: bold; }
       &.format-underlined { text-decoration: underline; }

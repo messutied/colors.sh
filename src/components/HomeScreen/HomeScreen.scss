@@ -1,5 +1,11 @@
 .home-screen {
   text-align: center;
   max-width: 700px;
-  margin: 30px auto;
+  margin: 40px auto 0 auto;
+
+  .help {
+    margin-bottom: 20px;
+    color: grey;
+    font-weight: 100;
+  }
 }

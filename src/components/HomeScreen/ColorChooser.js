@@ -2,9 +2,9 @@ import React from 'react';
 import colors from './colors-256';
 import './ColorChooser.scss';
 
-const ColorBtn = ({ color: [name, id, hex], callback }) => (
+const ColorBtn = ({ color: [name, id, hex], callback, selected }) => (
   <button
-    className="color"
+    className={`color ${selected ? 'selected' : ''}`}
     onClick={() => callback(id)}
     title={name}
     style={{ background: hex }}
@@ -34,7 +34,7 @@ export default class ColorChooser extends React.Component {
   }
 
   render() {
-    const { label, callback } = this.props;
+    const { label, callback, color } = this.props;
     const { isActive } = this.state;
     const className = `color-chooser ${isActive ? 'active' : ''}`;
     return (
@@ -46,8 +46,13 @@ export default class ColorChooser extends React.Component {
         {
           isActive &&
           <div className="colors">
-            {colors.map(color =>
-              <ColorBtn key={color[1]} color={color} callback={callback} />)}
+            {colors.map(c => (
+              <ColorBtn
+                key={c[1]}
+                color={c}
+                callback={callback}
+                selected={c[1] === color.id}
+              />))}
           </div>
         }
       </div>

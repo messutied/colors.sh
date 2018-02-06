@@ -20,8 +20,10 @@ export default ({ text, color, bgColor, formats }) => {
         colors.sh -- preview
       </div>
       <div className="terminal-body">
-        <span className="arrow">></span>
-        <span className={className} style={style}>{text}</span>
+        <div className="body-inner-content">
+          <span className="arrow">></span>
+          <span className={className} style={style} contentEditable>{text}</span>
+        </div>
       </div>
     </div>
   );
