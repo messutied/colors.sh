@@ -14,10 +14,10 @@ export default class RootContainer extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Full docs
+            Source docs
           </a>
           <div className="author">
-            Made by
+            Made by&nbsp;
             <a href="https://twitter.com/messutied" target="_blank" rel="noopener noreferrer">
               @messutied
             </a>

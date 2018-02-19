@@ -1,7 +1,7 @@
 import React from 'react';
 import './Terminal.scss';
 
-export default ({ text, color, bgColor, formats }) => {
+export default ({ text, color, bgColor, formats, theme }) => {
   const inverted = formats.includes('Invert');
   const dimmed = formats.includes('Dim');
   const finalFgColor = inverted ? bgColor : color;
@@ -10,7 +10,7 @@ export default ({ text, color, bgColor, formats }) => {
   const className = `text ${formats.map(f => `format-${f.toLowerCase()}`).join(' ')}`;
 
   return (
-    <div className="terminal">
+    <div className={`terminal ${theme}`}>
       <div className="terminal-header">
         <div className="btns">
           <div />
@@ -22,7 +22,14 @@ export default ({ text, color, bgColor, formats }) => {
       <div className="terminal-body">
         <div className="body-inner-content">
           <span className="arrow">></span>
-          <span className={className} style={style} contentEditable>{text}</span>
+          <span
+            className={className}
+            style={style}
+            contentEditable
+            suppressContentEditableWarning
+          >
+            {text}
+          </span>
         </div>
       </div>
     </div>

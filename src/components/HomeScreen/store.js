@@ -24,15 +24,25 @@ export default class Store {
   @observable selectedBgColor = {};
   @observable text = TEXT;
   @observable formats = [];
+  @observable terminalTheme = 'light';
 
   constructor() {
     this.setColor = this.setColor.bind(this);
     this.setBgColor = this.setBgColor.bind(this);
     this.setFormat = this.setFormat.bind(this);
+    this.setTerminalTheme = this.setTerminalTheme.bind(this);
   }
 
   @action setColor(id) {
     this.setAColor('selectedColor', id);
+  }
+
+  @action setTerminalTheme(theme) {
+    // if changing to light theme and white bg, set bg to black
+    if (theme === 'light' && this.selectedColor.id === 15) this.setColor(0);
+    // else if changing to dark theme and black bg, set bg to white
+    else if (theme === 'dark' && this.selectedColor.id === 0) this.setColor(15);
+    this.terminalTheme = theme;
   }
 
   @action setBgColor(id) {

@@ -1,4 +1,11 @@
 .controls {
+  button.toggle-settings {
+    border: none;
+    background: none;
+    font-size: 15px;
+    line-height: 1em;
+    cursor: pointer;
+  }
   .color-chooser > button, label {
     font-size: 15px;
   }
@@ -7,5 +14,13 @@
   }
   > * {
     margin: 0 5px;
+  }
+
+  .settings {
+    margin-top: 20px;
+    
+    select {
+      margin-left: 5px;
+    }
   }
 }

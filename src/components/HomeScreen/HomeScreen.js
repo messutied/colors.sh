@@ -25,6 +25,7 @@ const HomeScreen = () => {
         color={selectedColor.hex}
         bgColor={selectedBgColor.hex}
         formats={store.formats.map(f => f.name)}
+        theme={store.terminalTheme}
       />
       <Output lines={store.outputLines} />
     </div>
