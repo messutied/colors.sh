@@ -18,7 +18,10 @@
 
   .settings {
     margin-top: 20px;
-    
+
+    label {
+      margin: 0 10px;
+    }
     select {
       margin-left: 5px;
     }

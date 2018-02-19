@@ -4,6 +4,7 @@ import ColorChooser from './ColorChooser';
 import './Controls.scss';
 
 const themes = ['light', 'dark'];
+const escapeChars = ['\\033', '\\e', '\\x1B'];
 
 const FormatField = ({ formats, setFormat, format }) => (
   <label>
@@ -16,12 +17,18 @@ const FormatField = ({ formats, setFormat, format }) => (
   </label>
 );
 
-const Settings = ({ terminalTheme, setTerminalTheme }) => (
+const Settings = ({ terminalTheme, setTerminalTheme, escapeChar, setEscapeChar }) => (
   <div className="settings">
     <label>
       Terminal theme:
       <select value={terminalTheme} onChange={e => setTerminalTheme(e.target.value)}>
         {themes.map(t => <option key={t} value={t}>{t}</option>)}
+      </select>
+    </label>
+    <label>
+      Escape character:
+      <select value={escapeChar} onChange={e => setEscapeChar(e.target.value)}>
+        {escapeChars.map(c => <option key={c} value={c}>{c}</option>)}
       </select>
     </label>
   </div>

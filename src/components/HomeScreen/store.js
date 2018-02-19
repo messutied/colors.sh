@@ -25,12 +25,14 @@ export default class Store {
   @observable text = TEXT;
   @observable formats = [];
   @observable terminalTheme = 'light';
+  @observable escapeChar = '\\033';
 
   constructor() {
     this.setColor = this.setColor.bind(this);
     this.setBgColor = this.setBgColor.bind(this);
     this.setFormat = this.setFormat.bind(this);
     this.setTerminalTheme = this.setTerminalTheme.bind(this);
+    this.setEscapeChar = this.setEscapeChar.bind(this);
   }
 
   @action setColor(id) {
@@ -43,6 +45,10 @@ export default class Store {
     // else if changing to dark theme and black bg, set bg to white
     else if (theme === 'dark' && this.selectedColor.id === 0) this.setColor(15);
     this.terminalTheme = theme;
+  }
+
+  @action setEscapeChar(escapeChar) {
+    this.escapeChar = escapeChar;
   }
 
   @action setBgColor(id) {
@@ -62,14 +68,14 @@ export default class Store {
   }
 
   @computed get outputLines() {
-    const { selectedColor, selectedBgColor, text } = this;
+    const { selectedColor, selectedBgColor, text, escapeChar } = this;
 
     const lines = [
-      'NO_FORMAT="\\033[0m"',
-      ...this.formats.map(({ name, code }) => `F_${name.toUpperCase()}="\\033[${code}m"`),
+      `NO_FORMAT="${escapeChar}[0m"`,
+      ...this.formats.map(({ name, code }) => `F_${name.toUpperCase()}="${escapeChar}[${code}m"`),
     ];
-    const fgColor = Store.colorLine(selectedColor);
-    const bgColor = Store.colorLine(selectedBgColor, 'bg');
+    const fgColor = Store.colorLine(selectedColor, escapeChar);
+    const bgColor = Store.colorLine(selectedBgColor, escapeChar, 'bg');
     if (fgColor) lines.push(fgColor);
     if (bgColor) lines.push(bgColor);
 
@@ -81,8 +87,8 @@ export default class Store {
     return lines;
   }
 
-  static colorLine(color, type = 'fg') {
+  static colorLine(color, escapeChar, type = 'fg') {
     const code = type === 'fg' ? '38;5;' : '48;5;';
-    return color.id && `C_${color.name.toUpperCase()}="\\033[${code}${color.id}m"`;
+    return color.id && `C_${color.name.toUpperCase()}="${escapeChar}[${code}${color.id}m"`;
   }
 }
