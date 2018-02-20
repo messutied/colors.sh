@@ -22,12 +22,11 @@ const config = {
   output: {
     filename: 'bundle.[hash].js',
     path: dist,
-    publicPath: production ? '/' : `http://localhost:${PORT}/`,
   },
   devServer: {
     port: PORT,
     contentBase: dist,
-    // host: '0.0.0.0', // allow external connections
+    host: '0.0.0.0', // allow external connections
     historyApiFallback: true,
   },
   module: {
