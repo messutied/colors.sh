@@ -1,9 +1,9 @@
 {
-  "name": "frontend-template",
+  "name": "colors.sh",
   "version": "0.1.0",
   "description": "Zalando Pricing & Forecasting frontend",
   "main": "index.js",
-  "repository": "https://github.com/messutied/frontend-template",
+  "repository": "https://github.com/messutied/colors.sh",
   "scripts": {
     "test": "jest",
     "dev": "webpack-dev-server --hot",

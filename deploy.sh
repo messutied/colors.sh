@@ -3,4 +3,4 @@
 set -ex
 
 yarn prod:build
-(cd dist && now)
+now ./dist
