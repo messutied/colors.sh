@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Absolute path from relative path
 const aPath = relativePath => path.resolve(__dirname, relativePath);
@@ -50,6 +51,7 @@ const config = {
       filename: 'index.html',
       processOutput: assets => getHtml(assets.main.js),
     }),
+    new CopyWebpackPlugin([{ from: 'www/favicon.png' }]),
     // This plugins optimizes chunks and modules by
     // how much they are used in your app
     new webpack.optimize.OccurrenceOrderPlugin(),
