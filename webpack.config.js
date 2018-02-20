@@ -51,7 +51,7 @@ const config = {
       filename: 'index.html',
       processOutput: assets => getHtml(assets.main.js),
     }),
-    new CopyWebpackPlugin([{ from: 'www/favicon.png' }]),
+    new CopyWebpackPlugin([{ from: 'www/*.png', flatten: true }]),
     // This plugins optimizes chunks and modules by
     // how much they are used in your app
     new webpack.optimize.OccurrenceOrderPlugin(),
