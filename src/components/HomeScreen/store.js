@@ -27,7 +27,12 @@ export default class Store {
   @observable terminalTheme = 'light';
   @observable escapeChar = '\\033';
 
-  constructor() {
+  constructor(initialState) {
+    if (initialState) {
+      this.terminalTheme = initialState.terminalTheme;
+      this.escapeChar = initialState.escapeChar;
+      this.setColor(this.terminalTheme === 'light' ? 0 : 15);
+    }
     this.setColor = this.setColor.bind(this);
     this.setBgColor = this.setBgColor.bind(this);
     this.setFormat = this.setFormat.bind(this);
@@ -90,5 +95,10 @@ export default class Store {
   static colorLine(color, escapeChar, type = 'fg') {
     const code = type === 'fg' ? '38;5;' : '48;5;';
     return color.id && `C_${color.name.toUpperCase()}="${escapeChar}[${code}${color.id}m"`;
+  }
+
+  toJSON() {
+    const { terminalTheme, escapeChar } = this;
+    return { terminalTheme, escapeChar };
   }
 }
