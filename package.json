@@ -1,7 +1,7 @@
 {
   "name": "colors.sh",
   "version": "0.1.0",
-  "description": "Zalando Pricing & Forecasting frontend",
+  "description": "Colors.sh helps you put colors and format to your bash scripts",
   "main": "index.js",
   "repository": "https://github.com/messutied/colors.sh",
   "scripts": {
