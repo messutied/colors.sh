@@ -1,11 +1,12 @@
 # 🌈💻 Colors.sh
 
-## Requirements
+Colors.sh helps you put colors and format to your bash scripts in a visual way, it looks like this:
 
-1. Node.js >= 8.7.0
-1. Yarn
+![Preview](www/full_preview.png)
 
-## Setup
+Go to http://colors.sh to try it out now!
+
+## Development Setup
 
 Run the following commands under the project root folder:
 
