@@ -1,4 +1,4 @@
-# Colors.sh
+# 🌈💻 Colors.sh
 
 ## Requirements
 
