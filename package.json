@@ -1,7 +1,7 @@
 {
   "name": "colors.sh",
   "version": "0.1.0",
-  "description": "Colors.sh helps you put colors and format to your bash scripts",
+  "description": "Colors.sh helps you add colors and formatting to your bash scripts",
   "main": "index.js",
   "repository": "https://github.com/messutied/colors.sh",
   "scripts": {
