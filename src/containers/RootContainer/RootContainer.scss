@@ -27,10 +27,24 @@ footer {
   padding: 0 10px;
   max-width: 700px;
   margin: 50px auto 20px auto;
-  display: flex;
 
-  .author {
-    flex: 1;
-    text-align: right;
+  .github-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .footer-info {
+    display: flex;
+
+    .author {
+      flex: 1;
+      text-align: right;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .fork-me-btn img {
+    display: none;
   }
 }
