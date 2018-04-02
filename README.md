@@ -1,6 +1,6 @@
 # 🌈💻 Colors.sh
 
-Colors.sh helps you put colors and format to your bash scripts in a visual way, it looks like this:
+Colors.sh helps you add colors and formatting to your bash scripts in a visual way, it looks like this:
 
 ![Preview](www/full_preview.png)
 
