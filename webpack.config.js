@@ -5,6 +5,7 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Absolute path from relative path
 const aPath = relativePath => path.resolve(__dirname, relativePath);
@@ -33,8 +34,12 @@ const config = {
   module: {
     rules: [
       { test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{ loader: 'css-loader', options: { minimize: production } }, 'sass-loader'],
+        }) },
       { test: /\.(png|gif|ttf|otf|jpe?g|svg|eot|woff|woff2)$/i, loader: 'url-loader?limit=10000&publicPath=assets/' },
     ],
     noParse: /node_modules\/json-schema\/lib\/validate\.js/,
@@ -55,6 +60,7 @@ const config = {
     // This plugins optimizes chunks and modules by
     // how much they are used in your app
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new ExtractTextPlugin("styles.css"),
   ],
 };
 
